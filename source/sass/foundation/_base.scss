@@ -1,0 +1,40 @@
+html {
+	height: 100%;
+}
+
+body {
+	font-family: 'Roboto Mono', monospace;
+	margin: 0;
+	height: 100%;
+	color: #4136AD;
+}
+
+
+h1, h2, h4, h4, h5, h6 {
+	margin: 0;
+}
+
+p {
+	line-height: 1.5;
+}
+
+.title {
+	font-size: 4.4vw;
+	margin: 0 0 30px;
+}
+
+.strapline {
+	font-size: 3vw;
+	margin: 0 0 60px;
+	font-weight: 400;
+}
+
+
+a {
+	color: #0074D9;
+	transition: color 0.5s;
+	&:hover {
+		transition: color 0.5s;
+		color: lighten(#0074D9, 10%);
+	}
+}

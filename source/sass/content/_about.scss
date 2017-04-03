@@ -1,0 +1,29 @@
+.about {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	max-width: 900px;
+}
+
+.about__container {
+	padding: 60px;
+}
+
+.introduction {
+	margin: 0 0 60px;
+	font-size: 18px;
+}
+
+.contact__cta {
+	padding: 15px;
+    border: 1px solid;
+    display: inline-block;
+    transition: background 0.5s, color 0.5s, border 0.5s;
+    color: #79decc;
+    &:hover {
+    	background: #79decc;
+    	color: #fff;
+    	cursor: pointer;
+    }
+}
