@@ -18,12 +18,19 @@
 .contact__cta {
 	padding: 15px;
     border: 1px solid;
+    border-bottom: 3px solid;
     display: inline-block;
     transition: background 0.5s, color 0.5s, border 0.5s;
-    color: #79decc;
+    font-weight: 400;
     &:hover {
-    	background: #79decc;
-    	color: #fff;
+    	background: #4136AD;
+    	color: #f4f5f7;
     	cursor: pointer;
+    	a {
+    		color: #f4f5f7;
+    	}
+    }
+    a {
+    	letter-spacing: 1px;
     }
 }

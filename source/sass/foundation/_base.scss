@@ -7,6 +7,7 @@ body {
 	margin: 0;
 	height: 100%;
 	color: #4136AD;
+	background: #f4f5f7;
 }
 
 
@@ -21,10 +22,13 @@ p {
 .title {
 	font-size: 4.4vw;
 	margin: 0 0 30px;
+	span {
+		white-space: nowrap;
+	}
 }
 
 .strapline {
-	font-size: 3vw;
+	font-size: 2.5vw;
 	margin: 0 0 60px;
 	font-weight: 400;
 }
