@@ -4,51 +4,6 @@
 	height: 100%;
 	z-index: -1;
 	overflow: hidden;
-	svg {
-		position: absolute;
-		animation: diagonal-slide 5s;
-		fill: #f9ed32;
-		width: 100%;
-	}
-	svg.svg-triangle {
-		position: absolute;
-		animation: diagonal-slide2 5s, spinning 2s;
-		fill: #f9ed32;
-		width: 100%;
-	}
-}
-
-// https://codepen.io/anon/pen/BWbdKR
-@keyframes diagonal-slide {
-  0% {
-    transform: translate(20px, 10px);
-    animation-timing-function: ease-out;
-  }
-  80% {
-  	opacity: 1;
-  	animation-timing-function: ease-in;
-  }
-  100% {
-    transform: translate(100%, 100%);
-    opacity: 0;
-    animation-timing-function: ease-out;
-  }
-}
-
-@keyframes diagonal-slide2 {
-  0% {
-    transform: translate(0, 80%);
-    animation-timing-function: ease-out;
-  }
-  80% {
-  	opacity: 1;
-  	animation-timing-function: ease-in;
-  }
-  100% {
-    transform: translate(100%, 20%);
-    opacity: 0;
-    animation-timing-function: ease-out;
-  }
 }
 
 @keyframes spinning {
@@ -93,7 +48,79 @@
 
 
 .rect+.rect{
-  height:100px;
+  height:50px;
+  width: 50px;
   margin-top:100px;
   animation:rect-anim-right cubic-bezier(0.34, 0.01, 0.74, 0.71) 10s infinite alternate;
+  &:before {
+  	content: ' ';
+  	position: absolute;
+  	background: #ffffff;
+	height: 20px;
+	width: 20px;
+	left: 15px;
+	top: 15px;
+	border-radius: 5px;
+  }
 }
+
+.circle {
+	// necessary
+	animation: rect-anim-right cubic-bezier(0.34, 0.01, 0.74, 0.71) 10s infinite alternate;
+	background: #f9ed32;
+	position: absolute;
+	left: calc(30% - 100px);
+	// shape
+	height: 100px;
+	width: 100px;
+	border-radius: 50%;
+	// just to position away from the others
+	margin: 300px 0 0 0;
+	&:before {
+		content: ' ';
+		position: absolute;
+		background: #ffffff;
+		height: 60px;
+		width: 60px;
+		border-radius: 50%;
+		left: 20px;
+		top: 20px;
+	}
+}
+
+.triangle {
+	// necessary
+	animation: rect-anim-right cubic-bezier(0.34, 0.01, 0.74, 0.71) 10s infinite alternate;
+	background: #f9ed32;
+	position: absolute;
+	left: calc(30% - 100px);
+	// shape
+	height: 100px;
+	width: 100px;
+	clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+	margin: 400px 0 0;
+	&:before {
+		content: ' ';
+		position: absolute;
+		height: 60px;
+		width: 60px;
+		top: 30px;
+		left: 20px;
+		background: #fff;
+		clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+	}
+}
+
+.eye-svg {
+	position: absolute;
+	animation: rect-anim-right cubic-bezier(0.34, 0.01, 0.74, 0.71) 10s infinite alternate;
+	fill: #f9ed32;
+	width: 175px;
+	height: 175px;
+	left: calc(30% - 100px);
+	top: 200px;
+}
+
+// can use clip paths
+
+// maybe just use svg
