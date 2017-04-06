@@ -51,7 +51,7 @@
   height:50px;
   width: 50px;
   margin-top:100px;
-  animation:rect-anim-right cubic-bezier(0.34, 0.01, 0.74, 0.71) 10s infinite alternate;
+  animation:rect-anim-right cubic-bezier(0.34, 0.01, 0.74, 0.71) 17s infinite alternate;
   &:before {
   	content: ' ';
   	position: absolute;
@@ -66,7 +66,7 @@
 
 .circle {
 	// necessary
-	animation: rect-anim-right cubic-bezier(0.34, 0.01, 0.74, 0.71) 10s infinite alternate;
+	animation: rect-anim-right cubic-bezier(0.34, 0.01, 0.74, 0.71) 22s infinite alternate;
 	background: #f9ed32;
 	position: absolute;
 	left: calc(30% - 100px);
@@ -90,7 +90,7 @@
 
 .triangle {
 	// necessary
-	animation: rect-anim-right cubic-bezier(0.34, 0.01, 0.74, 0.71) 10s infinite alternate;
+	animation: rect-anim-right cubic-bezier(0.34, 0.01, 0.74, 0.71) 15s infinite alternate;
 	background: #f9ed32;
 	position: absolute;
 	left: calc(30% - 100px);
@@ -111,13 +111,13 @@
 	}
 }
 
-.eye-svg {
+.code-svg {
 	position: absolute;
-	animation: rect-anim-right cubic-bezier(0.34, 0.01, 0.74, 0.71) 10s infinite alternate;
+	animation: rect-anim-right cubic-bezier(0.34, 0.01, 0.74, 0.71) 20s infinite alternate;
 	fill: #f9ed32;
-	width: 175px;
-	height: 175px;
-	left: calc(30% - 100px);
+	width: 300px;
+	height: 300px;
+	left: calc(30% - 300px);
 	top: 200px;
 }
 
