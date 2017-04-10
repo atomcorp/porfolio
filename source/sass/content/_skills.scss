@@ -11,14 +11,21 @@
 
 .skill {
 	margin: 30px;
-	width: calc(33.333333% - 60px);
+	width: calc(33.333333% - 30px);
 	height: calc(25% - 60px);
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	border: 1px solid;
 	box-sizing: border-box;
-	transition: margin 1s;
+	transition: margin 1s, border-radius 1s;
+	text-align: center;
+	padding: 15px;
+	&:hover {
+		background: #4136AD;
+		color: #f4f5f7;
+ 
+	}
 }
 
 .skill__infomation {
