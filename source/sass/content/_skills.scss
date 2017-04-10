@@ -7,6 +7,9 @@
 	padding: 60px;
 	display: flex;
 	flex-wrap: wrap;
+	margin: auto;
+	border: 1px solid;
+	transition: border-radius 1s;
 }
 
 .skill {
@@ -21,6 +24,7 @@
 	transition: margin 1s, border-radius 1s;
 	text-align: center;
 	padding: 15px;
+	background: #f4f5f7;
 	&:hover {
 		background: #4136AD;
 		color: #f4f5f7;
