@@ -72,10 +72,10 @@ var skills = function() {
 		}, 1000);
 		state.moveRadius = setInterval (function() {
 			_setRadius();
-		}, 1000);
+		}, 625);
 		state.moveContainerRadius = setInterval (function() {
 			_setContainerRadius();
-		}, 1000);
+		}, 945);
 	};
 
 	function cancelSkills() {
@@ -87,8 +87,10 @@ var skills = function() {
 		// get whatevers more height or width
 		// assign smaller number to the other
 		// 240 is the 120 padding * 2
-		var width = (dom.container.offsetWidth - 480);
-		var height = (dom.container.offsetHeight - 480);
+
+		// todo: something stopping this being over 900px wide, but still being square
+		var width = (dom.container.offsetWidth - 240);
+		var height = (dom.container.offsetHeight - 240);
 		console.log(width, height)
 		if (width > height) {
 			dom.container.style.width = (height - (height / 4)) + 'px';
@@ -101,8 +103,7 @@ var skills = function() {
 
 	function _clickedSkill() {
 		// turn off 
-		console.log(this);
-		cancelSkills();
+		// cancelSkills();
 		this.classList.add("clicked");
 	}
 
