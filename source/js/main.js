@@ -1,11 +1,6 @@
 // Main.js
 
-jQuery(document).ready(function($) {
+(function() {
+	//=include content/skills.js
+})();
 
-/* 
-
-//=include tasks/page-multiple.js
-
-*/
-
-}); // END JQUERY
