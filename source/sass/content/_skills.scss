@@ -1,3 +1,51 @@
 .skills {
-	height: 100%;
+	min-height: 100%;
+	display: flex;
 }
+
+.skills__container {
+	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+	width: 100%;
+}
+
+.skill {
+	width: 33.333333%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-right: 1px solid;
+	border-bottom: 1px solid;
+	box-sizing: border-box;
+	height: 25%;
+	// transition: width: 0.5s;
+	&:hover {
+		background: #4136AD;
+		color: #f4f5f7;
+		width: 66.6666666666%;
+		.skill__infomation {
+			display: block;
+			padding: 0 15px;
+			width: 50%;
+		}
+		.skill__name {
+		    width: 50%;
+		    padding: 0 15px;
+		    text-align: center;
+		}
+	}
+}
+
+.skill__infomation {
+	display: none;
+}
+
+.skill--fixed {
+	position: absolute;
+	width: 33.333333%;
+    height: 25%;
+    // full size
+    height: 100%;
+    width: 100%;
+}	
