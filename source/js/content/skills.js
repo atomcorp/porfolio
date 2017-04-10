@@ -6,7 +6,9 @@ var skills = function() {
 	};
 
 	var state = {
-		interval: false
+		moveMargin: false,
+		moveRadius: false,
+		moveContainerRadius: false
 	};
 
 	// what does this do?
@@ -16,10 +18,10 @@ var skills = function() {
 		var margin = [];
 		// margins are the set css shorthand top/right/bottom/left
 		// margins must add up to 60 / 60
-		margin.push(Math.floor((Math.random() * 15) + 1)); // top
-		margin.push(Math.floor((Math.random() * 15) + 1)); // right
-		margin.push(15 - margin[0]); // bottom
-		margin.push(15 - margin[1]); // left
+		margin.push(Math.floor((Math.random() * 30) + 1)); // top
+		margin.push(Math.floor((Math.random() * 30) + 1)); // right
+		margin.push(30 - margin[0]); // bottom
+		margin.push(30 - margin[1]); // left
 		for (var i = 0; i < margin.length; i++) {
 			margin[i] += 'px';
 		}
@@ -54,45 +56,66 @@ var skills = function() {
 			var radius = _getRadius(50, 51);
 			skill.style['border-radius'] = radius.join(' ');
 		}
+	};
+
+	function _setContainerRadius() {
 		var containerRadius = _getRadius(20, 20);
 		dom.container.style['border-radius'] = containerRadius.join(' ');
 	};
 
 	function runSkills() {
-		setContainer();
+		_addClickListener();
+		setContainerSize();
 		_setMargin();
-		if (!state.interval) {
-			state.interval = setInterval (function() {
-				_setMargin();
-			}, 1000);
-			setInterval (function() {
-				_setRadius();
-			}, 1000);
-		}
+		state.moveMargin = setInterval (function() {
+			_setMargin();
+		}, 1000);
+		state.moveRadius = setInterval (function() {
+			_setRadius();
+		}, 1000);
+		state.moveContainerRadius = setInterval (function() {
+			_setContainerRadius();
+		}, 1000);
 	};
 
-	function cancelMargin() {
-		clearInterval(state.interval);
+	function cancelSkills() {
+		clearInterval(state.moveMargin);
+		clearInterval(state.moveRadius);
 	};
 
-	function setContainer() {
+	function setContainerSize() {
 		// get whatevers more height or width
 		// assign smaller number to the other
-		var width = dom.container.offsetWidth;
-		var height = dom.container.offsetHeight;
+		// 240 is the 120 padding * 2
+		var width = (dom.container.offsetWidth - 480);
+		var height = (dom.container.offsetHeight - 480);
+		console.log(width, height)
 		if (width > height) {
-			dom.container.style.width = height + 'px';
+			dom.container.style.width = (height - (height / 4)) + 'px';
 			dom.container.style.height = height + 'px';
 		} else {
 			dom.container.style.height = width + 'px';
-			dom.container.style.width = width + 'px';
+			dom.container.style.width = (width - (width / 4)) + 'px';
 		}
+	};
+
+	function _clickedSkill() {
+		// turn off 
+		console.log(this);
+		cancelSkills();
+		this.classList.add("clicked");
 	}
+
+	function _addClickListener() {
+		for (skill of dom.skill) {
+			skill.addEventListener('click', _clickedSkill, false);
+		}
+	};
 
 	return {
 		runSkills: runSkills,
-		cancelMargin: cancelMargin,
-		setContainer: setContainer
+		cancelSkills: cancelSkills,
+		setContainerSize: setContainerSize
 	}
 }
 

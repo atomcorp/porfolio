@@ -4,13 +4,15 @@
 }
 
 .skills__container {
-	padding: 60px;
+	padding: 120px;
 	display: flex;
 	flex-wrap: wrap;
-	margin: auto;
+	margin: auto auto auto 60px;
 	border: 1px solid;
 	transition: border-radius 1s;
-	// overflow: hidden;
+	overflow: hidden;
+	// need translate to stop glitching
+	transform: translate(0, 0);
 }
 
 .skill {
@@ -20,6 +22,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
 	border: 1px solid;
 	box-sizing: border-box;
 	transition: margin 1s, border-radius 1s;
@@ -27,27 +30,44 @@
 	padding: 15px;
 	background: #f4f5f7;
 	position: relative;
-	// &:before {
-	//     content: ' ';
-	//     position: absolute;
-	//     width: 868px;
-	//     height: 868px;
-	//     background: #4136a1;
-	//     transition: transform 1s;
-	//     transform: scale(0.01);
-	//     border-radius: 100%;
-	// }
-	// &:hover {
-	// 	background: #4136AD;
-	// 	color: #f4f5f7;
- // 		&:before {
- // 			transform: scale(1);
- // 		}
-	// }
+	&:before {
+	    content: ' ';
+	    position: absolute;
+	    width: 100vw;
+	    height: 100vh;
+	    background: #4136a1;
+	    transition: transform 1s;
+	    transform: scale(0) translate3D(0, 0, 0);
+	    border-radius: 100%;
+	}
+	&.clicked {
+		background: #4136AD;
+		color: #f4f5f7;
+		z-index: 1;	
+
+ 		&:before {
+ 			// need translate3D so that it follows the container border changes
+ 			transform: scale(1) translate3D(0, 0, 0);
+ 			z-index: -1;
+ 		}
+ 		.skill__infomation {
+ 			opacity: 1;
+ 		}
+	}
+}
+
+.skill__name {
+	top: 50%;
+	position: relative;
+	transform: translateY(-50%);
 }
 
 .skill__infomation {
-	display: none;
+	opacity: 0;
+	margin: 15px -50%;
+	top: 50%;
+	position: relative;
+	transition: opacity 1s;
 }
 
 .skill--fixed {
