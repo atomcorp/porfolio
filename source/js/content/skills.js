@@ -16,10 +16,10 @@ var skills = function() {
 		var margin = [];
 		// margins are the set css shorthand top/right/bottom/left
 		// margins must add up to 60 / 60
-		margin.push(Math.floor((Math.random() * 50) + 1)); // top
-		margin.push(Math.floor((Math.random() * 50) + 1)); // right
-		margin.push(30 - margin[0]); // bottom
-		margin.push(30 - margin[1]); // left
+		margin.push(Math.floor((Math.random() * 15) + 1)); // top
+		margin.push(Math.floor((Math.random() * 15) + 1)); // right
+		margin.push(15 - margin[0]); // bottom
+		margin.push(15 - margin[1]); // left
 		for (var i = 0; i < margin.length; i++) {
 			margin[i] += 'px';
 		}
@@ -28,6 +28,9 @@ var skills = function() {
 
 	function _getRadius(range, min) {
 		// threshold = range, min
+		// range = how many points it can deviate
+		// min = what point it starts at (plus the range)
+		// eg (10, 10) is between 10%-20%; (50, 50) is between 50%-100%
 		var radius = [];
 		radius.push(Math.floor((Math.random() * range) + min)); // top
 		radius.push(Math.floor((Math.random() * range) + min)); // right
@@ -64,7 +67,7 @@ var skills = function() {
 			}, 1000);
 			setInterval (function() {
 				_setRadius();
-			}, 500);
+			}, 1000);
 		}
 	};
 

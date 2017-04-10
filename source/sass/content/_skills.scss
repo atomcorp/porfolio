@@ -10,6 +10,7 @@
 	margin: auto;
 	border: 1px solid;
 	transition: border-radius 1s;
+	// overflow: hidden;
 }
 
 .skill {
@@ -25,11 +26,24 @@
 	text-align: center;
 	padding: 15px;
 	background: #f4f5f7;
-	&:hover {
-		background: #4136AD;
-		color: #f4f5f7;
- 
-	}
+	position: relative;
+	// &:before {
+	//     content: ' ';
+	//     position: absolute;
+	//     width: 868px;
+	//     height: 868px;
+	//     background: #4136a1;
+	//     transition: transform 1s;
+	//     transform: scale(0.01);
+	//     border-radius: 100%;
+	// }
+	// &:hover {
+	// 	background: #4136AD;
+	// 	color: #f4f5f7;
+ // 		&:before {
+ // 			transform: scale(1);
+ // 		}
+	// }
 }
 
 .skill__infomation {
