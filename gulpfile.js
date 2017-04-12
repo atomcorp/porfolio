@@ -11,6 +11,7 @@ var concat = require('gulp-concat');
 var jshint = require('gulp-jshint');
 var stylish = require('jshint-stylish'); // add color to jshint output
 var include = require('gulp-include');
+var babel = require('gulp-babel');
 // css + js
 // var rename = require('gulp-rename');
 var sourcemaps = require('gulp-sourcemaps');
@@ -66,15 +67,21 @@ gulp.task('sass', function () {
 gulp.task('js',function() {
     if (!inProduction) { // not in production
         return gulp.src([paths.jsPlugins, paths.jsSrc])
+            .pipe(include())
             .pipe(jshint())
             .pipe(jshint.reporter(stylish))
-            .pipe(include())
+            .pipe(babel({
+                presets: ['es2015']
+            }))
             .pipe(concat('all.js'))
             // .pipe(gzip())
             .pipe(gulp.dest(paths.dist));
     } else {
         return gulp.src([paths.jsPlugins, paths.jsSrc])
             .pipe(include())
+            .pipe(babel({
+                presets: ['es2015']
+            }))
             .pipe(uglify())
             .pipe(concat('all.js'))
             // .pipe(gzip())
