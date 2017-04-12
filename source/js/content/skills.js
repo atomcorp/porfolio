@@ -9,7 +9,8 @@ const skills = function() {
 	let state = {
 		moveMargin: false,
 		moveRadius: false,
-		moveContainerRadius: false
+		moveContainerRadius: false,
+		moveClicked: false
 	};
 
 	// what does this do?
@@ -65,23 +66,39 @@ const skills = function() {
 		dom.container.style['border-radius'] = containerRadius.join(' ');
 	}
 
-	function runSkills() {
+	function init() {
 		_addClickListener();
 		setContainerSize();
 		_setMargin();
+		_runSkillsAnimations();
+		state.moveContainerRadius = setInterval (function() {
+			_setContainerRadius();
+		}, 945);
+	}
+
+	function _runSkillsAnimations() {
+		_setMargin();
+		_setRadius();
 		state.moveMargin = setInterval (function() {
 			_setMargin();
 		}, 1000);
 		state.moveRadius = setInterval (function() {
 			_setRadius();
 		}, 625);
-		state.moveContainerRadius = setInterval (function() {
-			_setContainerRadius();
-		}, 945);
 	}
 
 	function cancelSkills() {
 		clearInterval(state.moveMargin);
+		clearInterval();
+	}
+
+
+	function _removeClickedSkill() {
+		/* jshint validthis: true */
+		// have to remove this click listener otherwise it will be called instantly if clicked again
+		this.removeEventListener('click', _removeClickedSkill, false);
+		_runSkillsAnimations();
+		this.classList.remove('clicked');
 		clearInterval(state.moveRadius);
 	}
 
@@ -103,11 +120,19 @@ const skills = function() {
 	}
 
 	function _clickedSkill() {
-		// turn off 
-		// cancelSkills();
 		/* jshint validthis: true */
+		let skill = this;
+		// turn off 
+		cancelSkills();
 		// http://stackoverflow.com/questions/16553264/why-is-jshint-throwing-a-possible-strict-violation-on-this-line/16553290#16553290
-		this.classList.add("clicked");
+		skill.classList.add('clicked');
+		let margin = _getMargin();
+		skill.style.margin = margin.join(' ');
+		state.moveClicked = setInterval (function() {
+			let margin = _getMargin();
+			skill.style.margin = margin.join(' ');
+		}, 1000);		
+		skill.addEventListener('click', _removeClickedSkill, false);
 	}
 
 	function _addClickListener() {
@@ -117,11 +142,11 @@ const skills = function() {
 	}
 
 	return {
-		runSkills: runSkills,
+		init: init,
 		cancelSkills: cancelSkills,
 		setContainerSize: setContainerSize
 	};
 };
 
 var newSkill = skills();
-newSkill.runSkills();
+newSkill.init();

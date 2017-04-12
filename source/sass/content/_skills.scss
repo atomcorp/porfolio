@@ -30,6 +30,9 @@
 	padding: 15px;
 	background: #f4f5f7;
 	position: relative;
+	// chill the browser out by forcing less complex animations
+	backface-visibility: hidden;
+	-webkit-font-smoothing: subpixel-antialiased;
 	&:before {
 	    content: ' ';
 	    position: absolute;
