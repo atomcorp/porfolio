@@ -119,6 +119,47 @@ const skills = function() {
 		}
 	}
 
+	 /**
+     * Solve for the 4th value
+     * @param Number width       Numerator from the right side of the equation
+     * @param Number height      Denominator from the right side of the equation
+     * @param Number numerator   Numerator from the left side of the equation
+     * @param Number denominator Denominator from the left side of the equation
+     * @return Number
+     */
+    function solve(width, height, numerator, denominator) {
+        // solve for width
+        if (undefined !== width) {
+            return round() ? Math.round(width / (numerator / denominator)) : width / (numerator / denominator);
+        }
+        // solve for height
+        else if (undefined !== height) {
+            return round() ? Math.round(height * (numerator / denominator)) : height * (numerator / denominator);
+        }
+        else {
+	        return undefined;
+        }
+    }
+
+	/**
+	 * Positioning elements
+	 * 
+	 * 1st. define the container
+	 * must be proportional rectangle
+	 * must work when resizing container
+	 * max-width is 900
+	 * max-height is height of screen (minus som padding)
+	 * so get height of screen (minus padding) 
+	 * 
+	 * 2nd. work out optimal grid
+	 * mine should be 3x4 (w*h, Numerator*Denominator)
+	 * ratio is (original height / original width) x new width = new height
+	 * for eg if screen is 804 height / 730 width
+	 * 730 / (3 / 4) = 973.3333333333334 (get the width)
+	 * 803 * (3 / 4) = 602.25 (get the height)
+	 * then, if result is more than width make reduce height by 10 (or so) and try again 
+	 */
+
 	function _clickedSkill() {
 		/* jshint validthis: true */
 		let skill = this;

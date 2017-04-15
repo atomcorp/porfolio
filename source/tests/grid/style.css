@@ -1,0 +1,19 @@
+html, body {
+	height: 100vh;
+	margin: 0;
+}
+
+.container {
+	margin: 0 auto;
+	max-width: 900px;
+	height: 100%;
+}
+
+.grid__container {
+	height: 100%;
+	position: relative;
+}
+
+.grid {
+	position: absolute;
+}
