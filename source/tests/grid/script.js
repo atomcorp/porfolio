@@ -62,64 +62,14 @@ function gridObjects() {
 		// cols
 		if (counter % 3 === 1) {
 			// 1st col
-			console.log(counter, 'col 1');
 		} else if (counter % 3 === 2) {
-			console.log(counter, 'col 2');
 			skill.style.left = objWidth + 'px';
 		} else if (counter % 3 === 0) {
-			console.log(counter, 'col 3');
 			skill.style.left = (objWidth * 2) + 'px';
 			top += objHeight;
 		}
-
-		// rows
 		counter++;
-			// 1, 4, 7, 10
-			// 2, 5, 8, 11
-			// 3, 6, 9, 12
-			// 1  2  3 
-			// 4  5  6
-			// 7  8  9
-			// 10 11 12
 	}
 }
-
-// function createContainer() {
-// 	// get current width
-// 	var grid = dom.grid;
-// 	// grid is max-width 900, height 100% of screen;
-// 	state.width = grid.offsetWidth;
-// 	state.height = grid.offsetHeight;
-// 	console.log(state.width, state.height);
-// 	state.breaker = 0;
-// 	// get height and width and turn in to correct ratio
-// 	if (state.width > state.height) {
-// 		// we always want this, why would it be portait?
-// 		// get width and work out optimal height
-// 		var optimalHeight = state.width / state.ratio;
-// 		testHeightFunction(optimalHeight);
-// 	} else {
-
-// 	}
-// }
-
-// function testHeightFunction(optimalHeight) {
-// 	if (optimalHeight > state.height) {
-// 		console.log(optimalHeight, 'greater');
-// 		recursiveChecker();
-// 	} else {
-// 		console.log(optimalHeight, 'lower');
-// 	}
-// }
-
-// function recursiveChecker() {
-// 	state.breaker++;
-// 	if (state.breaker > 100) {
-// 		return;
-// 	} else {
-// 		state.width = state.width - 10;
-// 		var testHeight = state.width / state.ratio;
-// 		testHeightFunction(testHeight);
-// 	}
 	
 // }

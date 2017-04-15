@@ -16,4 +16,7 @@ html, body {
 
 .grid {
 	position: absolute;
+	border: 15px solid #fff;
+	box-sizing: border-box;
+	overflow: hidden;
 }
