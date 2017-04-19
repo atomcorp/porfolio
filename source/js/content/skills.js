@@ -3,9 +3,7 @@ const skills = function() {
 		skill: document.querySelectorAll('.skill'),
 		container: document.querySelector('.skills__container')
 	};
-
-	const tom = 10;
-
+	
 	let state = {
 		moveMargin: false,
 		moveRadius: false,
