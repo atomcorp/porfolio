@@ -89,7 +89,7 @@ const skills = function() {
 
 	function cancelSkills() {
 		clearInterval(state.moveMargin);
-		clearInterval();
+		clearInterval(state.moveRadius);
 	}
 
 
@@ -98,7 +98,7 @@ const skills = function() {
 	function setContainerSize() {
 		const container = dom.container;
 		const width = container.offsetWidth;
-		const height = container.offsetHeight - 120;
+		const height = container.offsetHeight;
 		// just knock a 1/4 of the height from the height and apply to width
 		dom.container.style.width = height - ( height / 4 ) + 'px';
 		dom.container.style.height = height + 'px';
@@ -132,14 +132,6 @@ const skills = function() {
 		}
 	}
 
-	 /**
-     * Solve for the 4th value
-     * @param Number width       Numerator from the right side of the equation
-     * @param Number height      Denominator from the right side of the equation
-     * @param Number numerator   Numerator from the left side of the equation
-     * @param Number denominator Denominator from the left side of the equation
-     * @return Number
-     */
     function solve(width, height, numerator, denominator) {
         // solve for width
         if (undefined !== width) {
@@ -155,6 +147,7 @@ const skills = function() {
     }
 
 	function _clickedSkill() {
+		/* jshint validthis: true */
 		// http://stackoverflow.com/questions/16553264/why-is-jshint-throwing-a-possible-strict-violation-on-this-line/16553290#16553290
 		let skill = this;
 		state.clicked = {
@@ -165,8 +158,9 @@ const skills = function() {
 		};
 		// turn off 
 		cancelSkills();
-		skill.classList.add('clicked');
 		skill.style = '';
+		skill.classList.add('clicked');
+		skill.style['z-index'] = 9;
 		// just get it to move around while in this state
 		let position = _getPosition();
 		skill.style.transform = position.join(' ');
@@ -181,17 +175,20 @@ const skills = function() {
 
 	function _removeClickedSkill() {
 		/* jshint validthis: true */
+		var skill = this;
 		// have to remove this click listener otherwise it will be called instantly if clicked again
-		this.removeEventListener('click', _removeClickedSkill, false);
+		skill.removeEventListener('click', _removeClickedSkill, false);
 		// re-add previous el
-		this.addEventListener('click', _clickedSkill, false);
+		skill.addEventListener('click', _clickedSkill, false);
 		_runSkillsAnimations();
-		this.classList.remove('clicked');
-		this.style.top = state.clicked.top;
-		this.style.left = state.clicked.left;
-		this.style.height = state.clicked.height;
-		this.style.width = state.clicked.width;
-		clearInterval(state.moveRadius);
+		skill.classList.remove('clicked');
+		setTimeout(function() {
+			skill.style['z-index'] = '';
+		}, 1000);
+		skill.style.top = state.clicked.top;
+		skill.style.left = state.clicked.left;
+		skill.style.height = state.clicked.height;
+		skill.style.width = state.clicked.width;
 	}
 
 	function _addClickListener() {

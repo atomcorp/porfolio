@@ -2,6 +2,8 @@
 	min-height: 100%;
 	display: flex;
 	max-width: 900px;
+	padding: 60px;
+	box-sizing: border-box;
 }
 
 .skills__border {
@@ -17,25 +19,31 @@
 	position: absolute;
 	transform: translate(0, 0);
 	// transition: transform 1s, border-radius 1s;
-	transition: all 1s;
+	transition: transform 1s, height 1s, width 1s, top 1s, left 1s, border-radius 1s, background 0.3s;
 	padding: 15px;
 	background: #fff;
 	text-align: center;
 	border: 1px solid;
+	cursor: pointer;
 	// padding: 15px;
 	// background: #4136AD;
 	// color: #fff;
 	// chill the browser out by forcing less complex animations
 	backface-visibility: hidden;
 	-webkit-font-smoothing: subpixel-antialiased;
-
+	&:hover {
+		background: #4136AD;
+		color: #fff;
+	}
 	&.clicked {
 		height: 100%;
 		width: 100%;
 		top: 0;
 		left: 0;
 		transform: translate(0, 0);
-		z-index: 9;
+		background: #4136AD;
+		color: #fff;
+		border: 0;
  		.skill__infomation {
  			opacity: 1;
  			height: auto;
