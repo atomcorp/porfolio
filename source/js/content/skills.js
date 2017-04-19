@@ -1,7 +1,7 @@
 const skills = function() {
 	let dom = {
 		skill: document.querySelectorAll('.skill'),
-		container: document.querySelector('.skills__container')
+		container: document.querySelector('.skills__border')
 	};
 
 	let state = {
@@ -9,7 +9,8 @@ const skills = function() {
 		moveRadius: false,
 		moveContainerRadius: false,
 		moveClicked: false,
-		ratio: [3, 4]
+		ratio: [3, 4],
+		clicked: {}
 	};
 
 	// what does this do?
@@ -18,8 +19,8 @@ const skills = function() {
 	function _getPosition() {
 		const position = [];
 		// position is set for translates 2d vertical/horizontal
-		position.push(Math.floor((Math.random() * 60) - 31)); // top
-		position.push(Math.floor((Math.random() * 60) - 31)); // right
+		position.push(Math.floor((Math.random() * 30) - 16)); // top
+		position.push(Math.floor((Math.random() * 30) - 16)); // right
 		const property = position.map(function(position) {
 			return position + 'px';
 		});
@@ -67,6 +68,7 @@ const skills = function() {
 		_addClickListener();
 		setContainerSize();
 		_setPosition();
+		_setContainerRadius();
 		_runSkillsAnimations();
 		gridObjects();
 		state.moveContainerRadius = setInterval (function() {
@@ -91,33 +93,26 @@ const skills = function() {
 	}
 
 
-	function _removeClickedSkill() {
-		/* jshint validthis: true */
-		// have to remove this click listener otherwise it will be called instantly if clicked again
-		this.removeEventListener('click', _removeClickedSkill, false);
-		_runSkillsAnimations();
-		this.classList.remove('clicked');
-		clearInterval(state.moveRadius);
-	}
 
 	// always portrait so get height and use that on width
 	function setContainerSize() {
 		const container = dom.container;
 		const width = container.offsetWidth;
-		const height = container.offsetHeight;
+		const height = container.offsetHeight - 120;
 		// just knock a 1/4 of the height from the height and apply to width
 		dom.container.style.width = height - ( height / 4 ) + 'px';
+		dom.container.style.height = height + 'px';
 	}
 
 	function gridObjects() {
+		const gutter = 30;
 		// now we have the container divide it up into a 3 x 4 grid
 		const container = dom.container;
-		const width = container.offsetWidth;
-		const height = container.offsetHeight;
-		const objWidth = width / state.ratio[0];
-		const objHeight = height / state.ratio[1];
-		let top = 0;
-		const left = 0;
+		const width = container.offsetWidth - gutter;
+		const height = container.offsetHeight - gutter;
+		const objWidth = (width / state.ratio[0]) - gutter * 2;
+		const objHeight = (height / state.ratio[1]) - gutter * 2;
+		let top = gutter;
 		let counter = 1;
 		for (const skill of dom.skill) {
 			skill.style.width = objWidth + 'px';
@@ -126,11 +121,12 @@ const skills = function() {
 			// cols
 			if (counter % 3 === 1) {
 				// 1st col
+				skill.style.left = gutter + 'px';
 			} else if (counter % 3 === 2) {
-				skill.style.left = objWidth + 'px';
+				skill.style.left = (objWidth + (gutter * 3)) + 'px';
 			} else if (counter % 3 === 0) {
-				skill.style.left = (objWidth * 2) + 'px';
-				top += objHeight;
+				skill.style.left = ((objWidth * 2) + (gutter * 5)) + 'px';
+				top += (objHeight + (gutter * 2));
 			}
 			counter++;
 		}
@@ -158,39 +154,44 @@ const skills = function() {
         }
     }
 
-	/**
-	 * Positioning elements
-	 * 
-	 * 1st. define the container
-	 * must be proportional rectangle
-	 * must work when resizing container
-	 * max-width is 900
-	 * max-height is height of screen (minus som padding)
-	 * so get height of screen (minus padding) 
-	 * 
-	 * 2nd. work out optimal grid
-	 * mine should be 3x4 (w*h, Numerator*Denominator)
-	 * ratio is (original height / original width) x new width = new height
-	 * for eg if screen is 804 height / 730 width
-	 * 730 / (3 / 4) = 973.3333333333334 (get the width)
-	 * 803 * (3 / 4) = 602.25 (get the height)
-	 * then, if result is more than width make reduce height by 10 (or so) and try again 
-	 */
-
 	function _clickedSkill() {
-		/* jshint validthis: true */
+		// http://stackoverflow.com/questions/16553264/why-is-jshint-throwing-a-possible-strict-violation-on-this-line/16553290#16553290
 		let skill = this;
+		state.clicked = {
+			top: skill.style.top,
+			left: skill.style.left,
+			width: skill.style.width,
+			height: skill.style.height
+		};
 		// turn off 
 		cancelSkills();
-		// http://stackoverflow.com/questions/16553264/why-is-jshint-throwing-a-possible-strict-violation-on-this-line/16553290#16553290
 		skill.classList.add('clicked');
-		let margin = _getPosition();
-		skill.style.margin = margin.join(' ');
+		skill.style = '';
+		// just get it to move around while in this state
+		let position = _getPosition();
+		skill.style.transform = position.join(' ');
 		state.moveClicked = setInterval (function() {
-			let margin = _getPosition();
-			skill.style.margin = margin.join(' ');
+			let position = _getPosition();
+			skill.style.transform = position.join(' ');
 		}, 1000);		
+		// remove this, otherwise we'll just reuse this function when we click again
+		skill.removeEventListener('click', _clickedSkill, false);
 		skill.addEventListener('click', _removeClickedSkill, false);
+	}
+
+	function _removeClickedSkill() {
+		/* jshint validthis: true */
+		// have to remove this click listener otherwise it will be called instantly if clicked again
+		this.removeEventListener('click', _removeClickedSkill, false);
+		// re-add previous el
+		this.addEventListener('click', _clickedSkill, false);
+		_runSkillsAnimations();
+		this.classList.remove('clicked');
+		this.style.top = state.clicked.top;
+		this.style.left = state.clicked.left;
+		this.style.height = state.clicked.height;
+		this.style.width = state.clicked.width;
+		clearInterval(state.moveRadius);
 	}
 
 	function _addClickListener() {
