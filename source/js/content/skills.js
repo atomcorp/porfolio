@@ -3,30 +3,28 @@ const skills = function() {
 		skill: document.querySelectorAll('.skill'),
 		container: document.querySelector('.skills__container')
 	};
-	
+
 	let state = {
 		moveMargin: false,
 		moveRadius: false,
 		moveContainerRadius: false,
-		moveClicked: false
+		moveClicked: false,
+		ratio: [3, 4]
 	};
 
 	// what does this do?
 	// randomly assign different margins to the skills boxes
 
-	function _getMargin() {
-		const margin = [];
-		// margins are the set css shorthand top/right/bottom/left
-		// margins must add up to 60 / 60
-		margin.push(Math.floor((Math.random() * 30) + 1)); // top
-		margin.push(Math.floor((Math.random() * 30) + 1)); // right
-		margin.push(30 - margin[0]); // bottom
-		margin.push(30 - margin[1]); // left
-		const pixeledMargin = margin.map(function(position) {
+	function _getPosition() {
+		const position = [];
+		// position is set for translates 2d vertical/horizontal
+		position.push(Math.floor((Math.random() * 60) - 31)); // top
+		position.push(Math.floor((Math.random() * 60) - 31)); // right
+		const property = position.map(function(position) {
 			return position + 'px';
 		});
 
-		return pixeledMargin;
+		return property;
 	}
 
 	function _getRadius(range, min) {
@@ -45,10 +43,11 @@ const skills = function() {
 		return pointsRadius;
 	}
 
-	function _setMargin() {
+	function _setPosition() {
+		// go through each of the skills and reset the position
 		for (const skill of dom.skill) {
-			const margin = _getMargin();
-			skill.style.margin = margin.join(' ');
+			const position = _getPosition();
+			skill.style.transform = `translate(${position.join(',')})`;
 		}
 	}
 
@@ -67,18 +66,19 @@ const skills = function() {
 	function init() {
 		_addClickListener();
 		setContainerSize();
-		_setMargin();
+		_setPosition();
 		_runSkillsAnimations();
+		gridObjects();
 		state.moveContainerRadius = setInterval (function() {
 			_setContainerRadius();
 		}, 945);
 	}
 
 	function _runSkillsAnimations() {
-		_setMargin();
+		_setPosition();
 		_setRadius();
 		state.moveMargin = setInterval (function() {
-			_setMargin();
+			_setPosition();
 		}, 1000);
 		state.moveRadius = setInterval (function() {
 			_setRadius();
@@ -100,20 +100,39 @@ const skills = function() {
 		clearInterval(state.moveRadius);
 	}
 
+	// always portrait so get height and use that on width
 	function setContainerSize() {
-		// get whatevers more height or width
-		// assign smaller number to the other
-		// 240 is the 120 padding * 2
+		const container = dom.container;
+		const width = container.offsetWidth;
+		const height = container.offsetHeight;
+		// just knock a 1/4 of the height from the height and apply to width
+		dom.container.style.width = height - ( height / 4 ) + 'px';
+	}
 
-		// todo: something stopping this being over 900px wide, but still being square
-		const width = (dom.container.offsetWidth - 240);
-		const height = (dom.container.offsetHeight - 240);
-		if (width > height) {
-			dom.container.style.width = (height - (height / 4)) + 'px';
-			dom.container.style.height = height + 'px';
-		} else {
-			dom.container.style.height = width + 'px';
-			dom.container.style.width = (width - (width / 4)) + 'px';
+	function gridObjects() {
+		// now we have the container divide it up into a 3 x 4 grid
+		const container = dom.container;
+		const width = container.offsetWidth;
+		const height = container.offsetHeight;
+		const objWidth = width / state.ratio[0];
+		const objHeight = height / state.ratio[1];
+		let top = 0;
+		const left = 0;
+		let counter = 1;
+		for (const skill of dom.skill) {
+			skill.style.width = objWidth + 'px';
+			skill.style.height = objHeight + 'px';
+			skill.style.top = top + 'px';
+			// cols
+			if (counter % 3 === 1) {
+				// 1st col
+			} else if (counter % 3 === 2) {
+				skill.style.left = objWidth + 'px';
+			} else if (counter % 3 === 0) {
+				skill.style.left = (objWidth * 2) + 'px';
+				top += objHeight;
+			}
+			counter++;
 		}
 	}
 
@@ -165,10 +184,10 @@ const skills = function() {
 		cancelSkills();
 		// http://stackoverflow.com/questions/16553264/why-is-jshint-throwing-a-possible-strict-violation-on-this-line/16553290#16553290
 		skill.classList.add('clicked');
-		let margin = _getMargin();
+		let margin = _getPosition();
 		skill.style.margin = margin.join(' ');
 		state.moveClicked = setInterval (function() {
-			let margin = _getMargin();
+			let margin = _getPosition();
 			skill.style.margin = margin.join(' ');
 		}, 1000);		
 		skill.addEventListener('click', _removeClickedSkill, false);
