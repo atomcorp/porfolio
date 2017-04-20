@@ -16,7 +16,9 @@ var babel = require('gulp-babel');
 // var rename = require('gulp-rename');
 var sourcemaps = require('gulp-sourcemaps');
 var notify = require('gulp-notify');
-
+// html
+var nunjucks = require('gulp-nunjucks-render');
+var data = require('gulp-data');
 
 var paths = {
     sassSrc: 'source/sass/*.scss',
@@ -89,12 +91,28 @@ gulp.task('js',function() {
     }
 });
 
+gulp.task('nunjucks', function () {
+    return gulp.src('source/templates/*.html')
+    .pipe(data(function(file) {
+          return require('./source/json/data.json');
+        }))
+    .pipe(nunjucks({
+        path: 'source/templates/',
+        envOptions: {
+            noCache: true,
+            autoescape: false
+        },
+    }))
+    .pipe(gulp.dest('dist'));
+});
+
 gulp.task('watch',function() {
     gulp.watch(paths.sassSrc, ['sass']);
     gulp.watch(paths.watchSass, ['sass']);
     gulp.watch(paths.jsComponents, ['js']);
     gulp.watch(paths.jsSrc, ['js']);
+    gulp.watch('source/templates/*.html', ['nunjucks']);
 });
 
 // run sass + js watch for any more changes
-gulp.task('default', ['sass', 'js', 'watch']);
+gulp.task('default', ['sass', 'js', 'watch', 'nunjucks']);

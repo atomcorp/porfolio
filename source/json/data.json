@@ -1,0 +1,62 @@
+{ 
+	"test": "something",
+	"yes": "yes",
+	"about": {
+		"title": "Thomas maxwell smith",
+		"intro": ["I love handcoding and designing functional and appealing websites, with a strong emphasise on usabilty and user experience.", "After many years of working in both (in-house) and freelance I've developed a broad range of skills from prototyping in code or Photoshop, to conducting user tests, to creating dynamic, complex javascript apps, and to realising beautiful designs into robust, cross-browser complient web pages."]
+	}, 
+	"skills": [
+		{
+			"name": "CSS",
+			"description": "I write contempory, cross-browser complient SASS with thoughtful naming conventions (currently BEM). Flex rules!"
+		},
+		{
+			"name": "HTML5",
+			"description": "I write responsive, seo friendly and accessibilty aware markup. New html5 stuff."
+		},
+		{
+			"name": "Javascript",
+			"description": "I code considerate, modular and scalable javascript. I use jQuery where it's effecient, but I'm (use module patterns and explore the deeper end of JS)"
+		},
+		{
+			"name": "Prototyping",
+			"description": "I'm a keen believer in prototyping, whether with code or pencil and paper."
+		},
+		{
+			"name": "APIs",
+			"description": "I'm familar with learning and using APIs, and for example, have worked with ones like Google Maps, Firebase and Spotify in the past."
+		},
+		{
+			"name": "PHP",
+			"description": "I have good beginners grasp of PHP, such as common functions and statements, which I most often utilise for templating purposes."
+		},
+		{
+			"name": "Gulp",
+			"description": "I've used Gulp for a long time for compilling and minimsing SASS/JS, and the benfits it can bring for tasks like auto-prefixing and sourcemaps. I've also used webpack and found it an exciting alternative."
+		},
+		{
+			"name": "Performance",
+			"description": "I understand the importance of concise code and lean web pages, both for the user and in terms of search rank. I endeavor to push server side (stuff like gzip) and awareness of suitable content."
+		},
+		{
+			"name": "Usability",
+			"description": "I have a keen passion for usability, and have instigated and conducted user testing. I understand the (balance) between functional (something) and exciting users."
+		},
+		{
+			"name": "Adobe",
+			"description": "I'm comfortable using Adobe packages for presenting concepts, editing assets and other common front-end tasks."
+		},
+		{
+			"name": "Git",
+			"description": "I use git on the command line every day for managing projects, and I'm comfortable with the more advanced aspects like branching, stashing or Googling the right command."
+		}
+	], 
+	"projects": {
+		"project": {
+			"name": "Constellations",
+			"type": "Freelance",
+			"date": "2015",
+			"detail": ["Constellations are a cool bar and events venue in Liverpool. They wanted a CMS website that focused on their upcoming events, their menu and venue hire.", "I designed and built a site that followed their brand guidlines, utilising their beautiful photography, fonts and design touches like cutoff images and right aligned text.", "The process of building involved signing off on Photoshop mockups of the front page, events page and a generic page template. I used Drupal for the CMS so it would be easy for the"]
+		}
+	}
+}
