@@ -47,6 +47,7 @@
 		.skill__name {
 			top: 0%;
 			transform: translate(-50%, -100%);
+			font-size: 24px;
 		}
  		.skill__infomation {
  			opacity: 1;
@@ -68,11 +69,14 @@
     position: absolute;
     transform: translate(-50%, -50%);
     width: 100%;
-    transition: transform 1s 0.5s, top 1s 0.5s;
+    transition: transform 1s 0.5s, top 1s 0.5s, font-size 1.5s;
+    font-size: 18px;
+
 }
 
 .skill__infomation {
 	transform: translateY(100%);
 	opacity: 0;
 	transition: transform 1s 0.5s, opacity 1s 0.5s;
+	margin: 15px 0 0;
 }

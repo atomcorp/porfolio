@@ -69,10 +69,10 @@ const skills = function() {
 		setContainerSize();
 		_setPosition();
 		_setContainerRadius();
-		// _runSkillsAnimations();
+		_runSkillsAnimations();
 		gridObjects();
 		state.moveContainerRadius = setInterval (function() {
-			// _setContainerRadius();
+			_setContainerRadius();
 		}, 945);
 	}
 
@@ -203,4 +203,4 @@ const skills = function() {
 };
 
 var newSkill = skills();
-newSkill.init();
+// newSkill.init();
