@@ -69,10 +69,10 @@ const skills = function() {
 		setContainerSize();
 		_setPosition();
 		_setContainerRadius();
-		_runSkillsAnimations();
+		// _runSkillsAnimations();
 		gridObjects();
 		state.moveContainerRadius = setInterval (function() {
-			_setContainerRadius();
+			// _setContainerRadius();
 		}, 945);
 	}
 
@@ -92,8 +92,6 @@ const skills = function() {
 		clearInterval(state.moveRadius);
 	}
 
-
-
 	// always portrait so get height and use that on width
 	function setContainerSize() {
 		const container = dom.container;
@@ -110,8 +108,8 @@ const skills = function() {
 		const container = dom.container;
 		const width = container.offsetWidth - gutter;
 		const height = container.offsetHeight - gutter;
-		const objWidth = (width / state.ratio[0]) - gutter * 2;
-		const objHeight = (height / state.ratio[1]) - gutter * 2;
+		const objWidth = (width / state.ratio[0]) - (gutter * 2);
+		const objHeight = (height / state.ratio[1]) - (gutter * 2);
 		let top = gutter;
 		let counter = 1;
 		for (const skill of dom.skill) {
@@ -149,7 +147,7 @@ const skills = function() {
 	function _clickedSkill() {
 		/* jshint validthis: true */
 		// http://stackoverflow.com/questions/16553264/why-is-jshint-throwing-a-possible-strict-violation-on-this-line/16553290#16553290
-		let skill = this;
+		const skill = this;
 		state.clicked = {
 			top: skill.style.top,
 			left: skill.style.left,
@@ -175,7 +173,7 @@ const skills = function() {
 
 	function _removeClickedSkill() {
 		/* jshint validthis: true */
-		var skill = this;
+		const skill = this;
 		// have to remove this click listener otherwise it will be called instantly if clicked again
 		skill.removeEventListener('click', _removeClickedSkill, false);
 		// re-add previous el
