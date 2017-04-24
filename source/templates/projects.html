@@ -2,11 +2,11 @@
 	<div class="portfolio__images">
 		{% for project in projects %}
 		<div class="project__images" data-project-id="{{ project.id }}">
-			<div class="project__image">
-				{% for image in project.images %}
+			{% for image in project.images %}
+				<div class="project__image">
 					<img src="{{ image.url }}" alt="{{ image.alt }}">
-				{% endfor %}
-			</div>
+				</div>
+			{% endfor %}
 		</div>
 		{% endfor %}
 	</div>

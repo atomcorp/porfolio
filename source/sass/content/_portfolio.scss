@@ -1,9 +1,23 @@
 .portfolio {
 	min-height: 100%;
+	padding: 60px;
 }
 
 .portfolio__images {
 	display: flex;
 	flex-wrap: nowrap;
-	overflow-x: auto;
+	overflow: hidden;
+}
+
+// use css animations and js to move the image carousel
+
+.project__images {
+	transition: transform 1s;
+	// transform: translateX(-50%);
+}
+
+.project__image {
+	&:nth-of-type(n+2) {
+		display: none;
+	}
 }
