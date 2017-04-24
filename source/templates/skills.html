@@ -1,0 +1,16 @@
+<div class="skills">
+	<div class="skills__border">
+		{% for skill in skills %}
+		<div class="skill">
+			<div class="skill__content">
+				<div class="skill__name">
+					{{ skill.name }}
+				</div>
+				<div class="skill__infomation">
+					{{ skill.description }}
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>

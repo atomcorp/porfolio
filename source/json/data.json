@@ -3,6 +3,7 @@
 	"yes": "yes",
 	"about": {
 		"title": "Thomas maxwell smith",
+		"strapline": "Experienced front-end developer based in London",
 		"intro": ["I love handcoding and designing functional and appealing websites, with a strong emphasise on usabilty and user experience.", "After many years of working in both (in-house) and freelance I've developed a broad range of skills from prototyping in code or Photoshop, to conducting user tests, to creating dynamic, complex javascript apps, and to realising beautiful designs into robust, cross-browser complient web pages."]
 	}, 
 	"skills": [
@@ -51,12 +52,88 @@
 			"description": "I use git on the command line every day for managing projects, and I'm comfortable with the more advanced aspects like branching, stashing or Googling the right command."
 		}
 	], 
-	"projects": {
-		"project": {
+	"projects": [
+		{
+			"id": 1,
 			"name": "Constellations",
 			"type": "Freelance",
 			"date": "2015",
-			"detail": ["Constellations are a cool bar and events venue in Liverpool. They wanted a CMS website that focused on their upcoming events, their menu and venue hire.", "I designed and built a site that followed their brand guidlines, utilising their beautiful photography, fonts and design touches like cutoff images and right aligned text.", "The process of building involved signing off on Photoshop mockups of the front page, events page and a generic page template. I used Drupal for the CMS so it would be easy for the"]
+			"detail": [
+				"Constellations are a cool bar and events venue in Liverpool. They wanted a CMS website that focused on their upcoming events, their menu and venue hire.", 
+				"I designed and built a site that followed their brand guidlines, utilising their beautiful photography, fonts and design touches like cutoff images and right aligned text.", 
+				"The process of building involved signing off on Photoshop mockups of the front page, events page and a generic page template. I used Drupal for the CMS so it would be easy for the"
+			],
+			"images": [
+				{
+					"url": "/source/imgs/constellations/front.jpg",
+					"alt": "Front page of the Constellations site",
+					"description": ""
+				},
+				{
+					"url": "/source/imgs/constellations/event.jpg",
+					"alt": "An example of an event page",
+					"description": ""
+				},
+				{
+					"url": "/source/imgs/constellations/on.jpg",
+					"alt": "Events page for constellations",
+					"description": ""
+				}			
+			]
+		},
+		{	
+			"id": 2,
+			"name": "Cambridge Audio",
+			"type": "Employment",
+			"date": "2015-2017",
+			"detail": [
+				"As the lead front-end developer I've been responsible for a large part of the brands extensive web presense. As well as the main customer facing home ca.com, there is an ecommerce site, b2b platforms and a training resource.", 
+				"Typically I produce work based on designs by the senior graphic designer and consult on technical considerations if necessary. Other projects I spearhead, designing suitable content to meet business needs.", 
+				"Some of the work I'm most proud of is designing and developing Find a Dealer page, which uses the Google Maps API to help customers find 1000s of CA dealers around the world. I also really enjoyed developing the product page for the businesses Yoyo range which featured some fun and tricky challenges, like the image gallery and slinding, products innard feature.", 
+				"I've also been keen to suggest improvements and embrace to thinking like, improving the site performance, supporting BEM"
+			],
+			"images": [
+				{
+					"url": "/source/imgs/ca/yoyo.jpg",
+					"alt": "An example product page from Cambridge Audio",
+					"description": ""
+				}			
+			]
+		},
+		{	
+			"id": 3,
+			"name": "10-2015",
+			"type": "Personal",
+			"date": "2016",
+			"detail": [
+				"This was a small side project to try out some new things, most notably AngularJS. It's a list of some of my favourite music from the previous year, and I wanted it to be fun and easy to read."
+			],
+			"images": [
+				{
+					"url": "/source/imgs/10-2015/front.jpg",
+					"alt": "The top of mt page for my favourite music of 2015",
+					"description": ""
+				}			
+			]
+		},
+		{
+			"id": 4,
+			"name": "Through the Wireframe",
+			"type": "Personal",
+			"date": "2017",
+			"detail": [
+				"This is a simple kit for making wireframe prototypes.", 
+				"I came out of a prototype I was using, which I expanded to try and offer a reusable staring off point for future projects.", 
+				"It uses a cool concept I found online, which I structured into a small CSS library. I also made a random shape generator with JS, just for fun.", "I shared it via Github, and posted news about it on a small web dev forum. So far it has 1 star :)"
+			],
+			"images": [
+				{
+					"url": "/source/imgs/wireframe/facebook.jpg",
+					"alt": "The top of mt page for my favourite music of 2015",
+					"description": ""
+				}			
+			]
 		}
-	}
+	], 
+	"experience": "What's my experience? I guess a brief highlights of my CV. Working freelance projects, moving to CA and other work stff. What i enjoy doing in web dev, in a friendlier, chatty way...?"
 }
