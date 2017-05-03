@@ -2,7 +2,7 @@
 	"test": "something",
 	"yes": "yes",
 	"about": {
-		"title": "Thomas maxwell smith",
+		"title": ["Thomas", "maxwell smith"],
 		"strapline": "Experienced front-end developer based in London",
 		"intro": ["I love handcoding and designing functional and appealing websites, with a strong emphasise on usabilty and user experience.", "After many years of working in both (in-house) and freelance I've developed a broad range of skills from prototyping in code or Photoshop, to conducting user tests, to creating dynamic, complex javascript apps, and to realising beautiful designs into robust, cross-browser complient web pages."]
 	}, 
