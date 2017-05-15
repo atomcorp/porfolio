@@ -70,8 +70,6 @@ gulp.task('js',function() {
     if (!inProduction) { // not in production
         return gulp.src([paths.jsPlugins, paths.jsSrc])
             .pipe(include())
-            .pipe(jshint())
-            .pipe(jshint.reporter(stylish))
             .pipe(babel({
                 presets: ['es2015']
             }))
