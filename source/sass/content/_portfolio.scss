@@ -1,23 +1,40 @@
+.portfolio__overflow {
+  overflow: hidden;
+  width: calc(100% / 30%);
+  min-height: 100%;
+}
+
 .portfolio {
-	min-height: 100%;
-	padding: 60px;
+  padding: 60px;
+  max-width: 900px;
 }
 
 .portfolio__images {
-	display: flex;
-	flex-wrap: nowrap;
-	overflow: hidden;
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 // use css animations and js to move the image carousel
-
 .project__images {
-	transition: transform 1s;
-	// transform: translateX(-50%);
+  transition: transform 1s;
+  // transform: translateX(-50%);
 }
 
 .project__image {
-	&:nth-of-type(n+2) {
-		display: none;
-	}
+  &:nth-of-type(n+2) {
+    display: none;
+  }
 }
+
+.project__type {
+  display: none;
+}
+
+.project__date {
+  display: none;
+}
+
+.project__description {
+  display: none;
+}
+

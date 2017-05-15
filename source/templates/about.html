@@ -1,12 +1,12 @@
 <div class="about">
-	<div class="about__container">
-		<h1 class="title">{{ about.title[0] }} <span>{{ about.title[1] }}</span></h1>
-		<h2 class="strapline">{{ about.strapline }}</h2>
-		<div class="introduction">
-			{% for paragraph in about.intro %}
-			<p>{{ paragraph }}</p>
-			{% endfor %}
-		</div>
-		<h4 class="contact__cta">Contact me at <a href="mailto:employtms@gmail.com">employtms@gmail.com</a></h4>
-	</div>
+  <div class="about__container">
+    <h1 class="title">{{ about.title[0] }} <span>{{ about.title[1] }}</span></h1>
+    <h2 class="strapline">{{ about.strapline }}</h2>
+    <div class="introduction">
+      {% for paragraph in about.intro %}
+      <p>{{ paragraph }}</p>
+      {% endfor %}
+    </div>
+    <h4 class="contact__cta">Contact me at <a href="mailto:employtms@gmail.com">employtms@gmail.com</a></h4>
+  </div>
 </div>

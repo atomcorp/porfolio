@@ -1,5 +1,6 @@
 // 3rd party
 @import "3rd-party/normalize";
+// @import "3rd-party/browser-window";
 
 // foundation
 @import "foundation/base";
@@ -15,3 +16,4 @@
 
 // special effects
 @import "special-effects/floating-icons";
+@import "special-effects/browser-overwrite";

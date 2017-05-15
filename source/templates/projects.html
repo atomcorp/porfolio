@@ -1,33 +1,25 @@
-<div class="portfolio">
-	<div class="portfolio__images">
-		{% for project in projects %}
-		<div class="project__images" data-project-id="{{ project.id }}">
-			{% for image in project.images %}
-				<div class="project__image">
-					<img src="{{ image.url }}" alt="{{ image.alt }}">
-				</div>
-			{% endfor %}
-		</div>
-		{% endfor %}
-	</div>
-	<div class="porfolio__projects">
-		{% for project in projects %}
-		<div class="project" data-project-id="{{ project.id }}">
-			<div class="project__name">
-				{{ project.name }}
-			</div>
-			<div class="project__type">
-				{{ project.type }}
-			</div>
-			<div class="project__date">
-				{{ project.date }}
-			</div>
-			<div class="project__description">
-				{% for paragraph in project.detail %}
-					{{ paragraph }}
-				{% endfor %}
-			</div>
-		</div>
-		{% endfor %}
-	</div>
+<div class="portfolio__overflow">
+  <div class="portfolio">
+    {% include "browser-window.html" %}
+    <div class="porfolio__projects">
+      {% for project in projects %}
+      <div class="project" data-project-id="{{ project.id }}">
+        <div class="project__name">
+          {{ project.name }}
+        </div>
+        <div class="project__type">
+          {{ project.type }}
+        </div>
+        <div class="project__date">
+          {{ project.date }}
+        </div>
+        <div class="project__description">
+          {% for paragraph in project.detail %}
+            <p>{{ paragraph }}</p>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 </div>
