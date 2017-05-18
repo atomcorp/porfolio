@@ -68,7 +68,7 @@ const projects = function() {
   }
 
   function _moveUnderline() {
-    let parentOffset = document.querySelector('.porfolio__projects').getBoundingClientRect().left;
+    const parentOffset = document.querySelector('.porfolio__projects').getBoundingClientRect().left;
     const distance = dom.projects[state.activeProjectId - 1].getBoundingClientRect().left - parentOffset;
     dom.underline.style.width = dom.projects[state.activeProjectId - 1].getBoundingClientRect().width + 'px';
     dom.underline.style.transform = `translateX(${distance}px)`;
