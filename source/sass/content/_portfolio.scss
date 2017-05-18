@@ -29,11 +29,12 @@
 }
 
 .porfolio__projects {
-  display: flex;
+  // display: flex;
+  flex-wrap: wrap;
 }
 
 .project {
-
+  display: inline-block;
 }
 
 .project__type {
@@ -49,32 +50,11 @@
 }
 
 .project__underline {
-  width: 100%;
+  width: 0%;
   height: 3px;
   position: relative;
   overflow: hidden;
-  &:before {
-    content: ' ';
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 3px;
-    position: absolute;
-    background: #4136AD;
-    transition: transform 1s;
-    transform: translateX(-100%);
-  } 
-}
-
-.project__underline--animate {
-  
-    transform: translateX(0);
-  }
-}
-
-.project__underline--reverse {
-  &:before {
-    transform: translateX(100%);
-  }
-  
+  background: #4136AD;
+  transform: translateX(0);
+  transition: transform 0.5s linear, width 0.5s;
 }
