@@ -68,10 +68,27 @@ const projects = function() {
   }
 
   function _moveUnderline() {
+    // maybe find a way of stretching the line to it's destination
+    // then losing it to match width after
+
+    // get (distance of new item +  width of new item) and apply to line width
+    // then apply new item width to line
+    // const parentOffset = document.querySelector('.porfolio__projects').getBoundingClientRect().left;
+    // const newItemWidth = dom.projects[state.activeProjectId - 1].getBoundingClientRect().width;
+    // let distance = (dom.projects[state.activeProjectId - 1].getBoundingClientRect().left + newItemWidth) - parentOffset;
+    // dom.underline.style.width = distance + 'px';
+    // setTimeout(function() {
+    //   let distance = dom.projects[state.activeProjectId - 1].getBoundingClientRect().left - parentOffset;
+    //   dom.underline.style.width = dom.projects[state.activeProjectId - 1].getBoundingClientRect().width + 'px';
+    //   dom.underline.style.transform = `translateX(${distance}px)`;
+    // }, 1000);
+
+    // works fine
     const parentOffset = document.querySelector('.porfolio__projects').getBoundingClientRect().left;
     const distance = dom.projects[state.activeProjectId - 1].getBoundingClientRect().left - parentOffset;
     dom.underline.style.width = dom.projects[state.activeProjectId - 1].getBoundingClientRect().width + 'px';
     dom.underline.style.transform = `translateX(${distance}px)`;
+
   }
 
 
