@@ -1,6 +1,6 @@
-<div class="portfolio__overflow">
+<div class="portfolio__container">
   <div class="portfolio">
-    {% include "browser-window.html" %}
+    {% include "browser.html" %}
     <div class="porfolio__projects">
       {% for project in projects %}
       <div class="project" data-project-id="{{ project.id }}">
@@ -18,6 +18,7 @@
             <p>{{ paragraph }}</p>
           {% endfor %}
         </div>
+        <div class="project__underline"></div>
       </div>
       {% endfor %}
     </div>

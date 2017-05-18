@@ -1,0 +1,30 @@
+<!-- inspiration: http://colinkeany.com/fake-browser/ -->
+<div class="browser__container">
+  <div class="browser">
+    <div class="browser__bar">
+      <div class="browser__dots">
+        <div class="browser__dot browser__dot--close"></div>
+        <div class="browser__dot browser__dot--max"></div>
+        <div class="browser__dot browser__dot--min"></div>
+      </div>
+      <div class="browser__expand">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352.054 352.054">
+          <polygon points="144.206,186.634 30,300.84 30,238.059 0,238.059 0,352.054 113.995,352.054 113.995,322.054 51.212,322.054    165.419,207.847  "/>
+          <polygon points="238.059,0 238.059,30 300.84,30 186.633,144.208 207.846,165.42 322.054,51.213 322.054,113.995 352.054,113.995    352.054,0  "/>
+        </svg>
+      </div>
+    </div>
+    <div class="browser__window"></div>
+  </div>
+  <div class="portfolio__images">
+    {% for project in projects %}
+    <div class="project__images" data-project-id="{{ project.id }}">
+      {% for image in project.images %}
+        <div class="project__image">
+          <img src="{{ image.url }}" alt="{{ image.alt }}">
+        </div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
