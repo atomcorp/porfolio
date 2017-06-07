@@ -18,7 +18,8 @@
 
 // use css animations and js to move the image carousel
 .project__images {
-  transition: transform 1s;
+  transition: transform 1s, filter 1s;
+  filter: grayscale(100%);
   // transform: translateX(-50%);
 }
 
@@ -33,20 +34,40 @@
   flex-wrap: wrap;
 }
 
-.project {
-  display: inline-block;
+.project__names {
+  display: flex;
+  align-items: flex-end;
+}
+
+.project__name {
+  text-align: center;
+  padding: 15px 15px 15px 0;
+}
+
+.project__detail {
+  height: 100%;
+}
+
+.project__detail {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 30px;
+  box-sizing: border-box;
 }
 
 .project__type {
-  display: none;
+  
 }
 
 .project__date {
-  display: none;
+ 
 }
 
 .project__description {
-  display: none;
+
 }
 
 .project__underline {

@@ -2,25 +2,15 @@
   <div class="portfolio">
     {% include "browser.html" %}
     <div class="porfolio__projects">
+      <div class="project__names">
       {% for project in projects %}
-      <div class="project" data-project-id="{{ project.id }}">
-        <div class="project__name">
-          {{ project.name }}
+        <div class="project__name" data-project-id="{{ project.id }}">
+          <span>{{ project.name }}</span>
         </div>
-        <div class="project__type">
-          {{ project.type }}
-        </div>
-        <div class="project__date">
-          {{ project.date }}
-        </div>
-        <div class="project__description">
-          {% for paragraph in project.detail %}
-            <p>{{ paragraph }}</p>
-          {% endfor %}
-        </div>
-      </div>
       {% endfor %}
+      </div>
+      <div class="project__underline"></div>
     </div>
-    <div class="project__underline"></div>
+    
   </div>
 </div>

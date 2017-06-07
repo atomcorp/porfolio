@@ -2,8 +2,9 @@ const projects = function() {
 
   const dom = {
     images: document.querySelectorAll('.project__images'),
-    projects: document.querySelectorAll('.project'),
-    underline: document.querySelector('.project__underline')
+    projectNames: document.querySelectorAll('.project__name'),
+    underline: document.querySelector('.project__underline'),
+    projectDetails: document.querySelectorAll('.project__detail')
   };
 
   let state = {
@@ -14,18 +15,11 @@ const projects = function() {
 
   function init() {
     _addEls();
-    _setImageDimensions();
     _setUnderline();
   }
 
-  function _setImageDimensions() {
-    // get all images dimensions, should all be the same
-    // for not lets just use the first
-    state.slideWidth = dom.images[0].clientWidth;
-  }
-
   function _addEls() {
-    for (const project of dom.projects) {
+    for (const project of dom.projectNames) {
       project.addEventListener('click', function() {
         /* jshint validthis: true */
         if (state.isAnimating === false) {
@@ -34,6 +28,7 @@ const projects = function() {
           _setActiveProject(self.dataset.projectId);
           _moveProjectImages();
           _moveUnderline();
+          _showProjectInfo();
           setTimeout(function() {
             state.isAnimating = false;
           }, state.animationDuration)
@@ -43,15 +38,19 @@ const projects = function() {
   }
 
   function _setActiveProject(newId = 1) {
-    state.priorActiveProjectId = state.activeProjectId;
     state.activeProjectId = parseInt(newId);
   }
 
   function _moveProjectImages() {
     // how many do we need to move
     let movement = 0;
-    movement = (state.slideWidth * state.activeProjectId) - state.slideWidth;
+    const slideWidth = dom.images[0].clientWidth;
+    movement = (slideWidth * state.activeProjectId) - slideWidth;
     for (const image of dom.images) {
+      image.style.filter = 'grayscale(100%)';
+      if (parseInt(image.dataset.projectId) === state.activeProjectId) {
+        image.style.filter = 'grayscale(0%)';
+      }
       image.style.transform = `translateX(-${movement}px)`;
     }
   }
@@ -64,37 +63,29 @@ const projects = function() {
   */
   function _setUnderline() {
     // create underline an place it under the first item
-    dom.underline.style.width = dom.projects[0].getBoundingClientRect().width + 'px';
+    dom.underline.style.width = dom.projectNames[0].getBoundingClientRect().width + 'px';
   }
 
   function _moveUnderline() {
-    // maybe find a way of stretching the line to it's destination
-    // then losing it to match width after
-
-    // get (distance of new item +  width of new item) and apply to line width
-    // then apply new item width to line
-    // const parentOffset = document.querySelector('.porfolio__projects').getBoundingClientRect().left;
-    // const newItemWidth = dom.projects[state.activeProjectId - 1].getBoundingClientRect().width;
-    // let distance = (dom.projects[state.activeProjectId - 1].getBoundingClientRect().left + newItemWidth) - parentOffset;
-    // dom.underline.style.width = distance + 'px';
-    // setTimeout(function() {
-    //   let distance = dom.projects[state.activeProjectId - 1].getBoundingClientRect().left - parentOffset;
-    //   dom.underline.style.width = dom.projects[state.activeProjectId - 1].getBoundingClientRect().width + 'px';
-    //   dom.underline.style.transform = `translateX(${distance}px)`;
-    // }, 1000);
-
-    // works fine
     const parentOffset = document.querySelector('.porfolio__projects').getBoundingClientRect().left;
-    const distance = dom.projects[state.activeProjectId - 1].getBoundingClientRect().left - parentOffset;
-    dom.underline.style.width = dom.projects[state.activeProjectId - 1].getBoundingClientRect().width + 'px';
+    const distance = dom.projectNames[state.activeProjectId - 1].querySelector('span').getBoundingClientRect().left - parentOffset;
+    dom.underline.style.width = dom.projectNames[state.activeProjectId - 1].querySelector('span').getBoundingClientRect().width + 'px';
     dom.underline.style.transform = `translateX(${distance}px)`;
-
   }
 
+  function _showProjectInfo() {
+    for (const project of dom.projectDetails) {
+      project.style.display = 'none';
+      if (parseInt(project.dataset.projectId) === state.activeProjectId) {
+        project.style.display = 'flex';
+        console.log(project.style.display);
+      }
+    }
+  }
 
   return {
     init: init
-  };
+  }
 
 };
 

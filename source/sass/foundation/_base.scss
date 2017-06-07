@@ -4,7 +4,7 @@ html {
 
 body {
   // double monospace??? https://github.com/necolas/normalize.css/issues/519#issuecomment-197131966
-  font-family: 'Space Mono', monospace,monospace;
+  font-family: 'Space Mono', monospace, monospace;
   margin: 0;
   height: 100%;
   color: #4136AD;
@@ -23,6 +23,7 @@ p {
 .title {
   font-size: 4.4vw;
   margin: 0 0 30px;
+  font-family: 'Roboto Mono', monospace, monospace;
   span {
     white-space: nowrap;
   }
@@ -32,6 +33,7 @@ p {
   font-size: 2.5vw;
   margin: 0 0 60px;
   font-weight: 400;
+  font-family: 'Roboto Mono', monospace, monospace;
 }
 
 

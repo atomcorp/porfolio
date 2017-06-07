@@ -14,7 +14,25 @@
         </svg>
       </div>
     </div>
-    <div class="browser__window"></div>
+    <div class="browser__window">
+      <div class="project__details">
+        {% for project in projects %}
+        <div class="project__detail" data-project-id="{{ project.id }}">
+          <div class="project__type">
+            {{ project.type }}
+          </div>
+          <div class="project__date">
+            {{ project.date }}
+          </div>
+          <div class="project__description">
+            {% for paragraph in project.detail %}
+              <p>{{ paragraph }}</p>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
   </div>
   <div class="portfolio__images">
     {% for project in projects %}
