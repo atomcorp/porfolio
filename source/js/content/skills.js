@@ -203,4 +203,4 @@ const skills = function() {
 };
 
 var newSkill = skills();
-// newSkill.init();
+newSkill.init();
