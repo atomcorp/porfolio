@@ -1,0 +1,16 @@
+<div class="portfolio__container">
+  <div class="portfolio">
+    {% include "browser.html" %}
+    <div class="porfolio__projects">
+      <div class="project__names">
+      {% for project in projects %}
+        <div class="project__name" data-project-id="{{ project.id }}">
+          <span>{{ project.name }}</span>
+        </div>
+      {% endfor %}
+      </div>
+      <div class="project__underline"></div>
+    </div>
+    
+  </div>
+</div>

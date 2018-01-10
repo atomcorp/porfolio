@@ -1,6 +1,9 @@
 // Main.js
 (function() {
-	'use strict';
-	//=include content/skills.js
-})();
+  'use strict';
+  //=include content/skills.js
+  //=include content/projects.js
+})()
+
+
 
